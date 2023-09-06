@@ -4,6 +4,9 @@ const path = require('path');
 const cors = require('cors');
 
 const movies = require('./API/getMovies');
+const series = require('./API/getSeries');
+const filtroGenero = require('./API/filtroGenero');
+const seccion = require('./API/filtroSeccion');
 
 const corsOptions = {
   origin: 'http://localhost:9000',
@@ -15,6 +18,9 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(movies);
+app.use(series);
+app.use(filtroGenero);
+app.use(seccion);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

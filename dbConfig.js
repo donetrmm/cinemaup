@@ -1,19 +1,23 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const dotenv = require('dotenv');
 dotenv.config();
 
 const dbConfig = {
-  host: process.env.HOST,
-  port: process.env.PORT,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
+  host: 'localhost',
+  port: 3306,
+  user: 'root',
+  password: 'Belatrix12?', 
+  database: 'mydb',
 };
 
 let connection;
 
+function createConnection() {
+  return mysql.createConnection(dbConfig);
+}
+
 function handleDisconnect() {
-  connection = mysql.createConnection(dbConfig);
+  connection = createConnection();
 
   connection.connect((err) => {
     if (err) {
@@ -28,12 +32,12 @@ function handleDisconnect() {
   connection.on('error', (err) => {
     if (err.code === 'PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR') {
       console.error('Se ha producido un error de encolado después de un error fatal:', err.message);
-      connection.end();
+      connection.destroy();
       console.log('Reintentando conexión en 3 segundos...');
       setTimeout(handleDisconnect, 3000);
     } else if (err.code === 'ECONNRESET') {
       console.error('Se ha producido un error de conexión reset:', err.message);
-      connection.end();
+      connection.destroy();
       console.log('Reintentando conexión en 3 segundos...');
       setTimeout(handleDisconnect, 3000);
     } else {

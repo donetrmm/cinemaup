@@ -8,6 +8,7 @@ const series = require('./API/getSeries');
 const filtroGenero = require('./API/filtroGenero');
 const seccion = require('./API/filtroSeccion');
 const filtroRecientes = require('./API/filtroRecientes');
+const busquedaTitulo = require('./API/busquedaTitulo');
 
 const corsOptions = {
   origin: 'http://localhost:9000',
@@ -23,6 +24,7 @@ app.use(series);
 app.use(filtroGenero);
 app.use(seccion);
 app.use(filtroRecientes);
+app.use(busquedaTitulo);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

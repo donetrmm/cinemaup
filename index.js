@@ -12,7 +12,7 @@ const busquedaTitulo = require('./API/busquedaTitulo');
 const busquedaID = require('./API/busquedaID');
 
 const corsOptions = {
-  origin: 'http://localhost:9000',
+  origin: 'http://127.0.0.1:5500',
 };
 
 app.use(cors(corsOptions)); 

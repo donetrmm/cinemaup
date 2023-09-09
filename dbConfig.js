@@ -6,7 +6,7 @@ const dbConfig = {
   host: 'localhost',
   port: 3306,
   user: 'root',
-  password: 'Belatrix12?', 
+  password: 'Belatrix12?',  //TODO: Cambia por tu contra eu
   database: 'mydb',
 };
 

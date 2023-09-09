@@ -10,6 +10,8 @@ const seccion = require('./API/filtroSeccion');
 const filtroRecientes = require('./API/filtroRecientes');
 const busquedaTitulo = require('./API/busquedaTitulo');
 const busquedaID = require('./API/busquedaID');
+const inicioSeccion = require('./API/incioSeccion');
+const inicioGenero = require('./API/inicioGenero');
 
 const corsOptions = {
   origin: 'http://127.0.0.1:5500',
@@ -27,6 +29,8 @@ app.use(seccion);
 app.use(filtroRecientes);
 app.use(busquedaTitulo);
 app.use(busquedaID);
+app.use(inicioGenero);
+app.use(inicioSeccion);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
